@@ -1,0 +1,62 @@
+{
+  "name": "OpenDirectionApp",
+  "version": "0.0.1",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "precommit": "npm run git-hook",
+    "prepush": "npm run git-hook",
+    "git-hook": "npm run lint -s",
+    "lint": "standard --verbose | snazzy",
+    "lintdiff": "git diff --name-only --cached --relative | grep '\\.js$' | xargs standard | snazzy",
+    "fixcode": "standard --fix"
+  },
+  "dependencies": {
+    "apisauce": "^0.14.0",
+    "expo": "^22.0.0",
+    "firebase": "^4.5.2",
+    "lodash": "^4.17.2",
+    "moment": "^2.18.1",
+    "npm": "^4.6.1",
+    "prop-types": "^15.5.10",
+    "ramda": "^0.24.0",
+    "react": "16.0.0-beta.5",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.1.tar.gz",
+    "react-native-popup-dialog": "^0.9.36",
+    "react-native-snap-carousel": "^3.3.3",
+    "react-navigation": "^1.0.0-beta.7",
+    "react-redux": "^5.0.2",
+    "redux": "^3.7.2",
+    "redux-persist": "^4.1.0",
+    "redux-saga": "^0.16.0",
+    "reduxsauce": "0.4.1",
+    "seamless-immutable": "^7.1.2",
+    "shortid": "^2.2.8",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.0.0",
+    "babel-plugin-ignite-ignore-reactotron": "^0.3.0",
+    "husky": "^0.13.1",
+    "react-dom": "16.0.0-beta.5",
+    "reactotron-react-native": "^1.12.0",
+    "reactotron-redux": "^1.11.1",
+    "reactotron-redux-saga": "^1.11.1",
+    "snazzy": "^7.0.0",
+    "standard": "10.0.2"
+  },
+  "config": {},
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "expect",
+      "fetch",
+      "navigator",
+      "__DEV__",
+      "XMLHttpRequest",
+      "FormData",
+      "React$Element"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "OpenDirectionApp",
+  "displayName": "Open Direction by NoteSquare",
+  "expo": {
+    "name": "Open Direction",
+    "description": "Open Direction",
+    "slug": "opendirectionapp",
+    "privacy": "unlisted",
+    "sdkVersion": "22.0.0",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "primaryColor": "#cccccc",
+    "icon": "./assets/icons/app.png",
+    "loading": {
+      "icon": "./assets/icons/app.png",
+      "backgroundColor": "#ffffff",
+      "hideExponentText": true
+    },
+    "splash": {
+    },
+    "packagerOpts": {
+      "assetExts": ["ttf", "mp4", "jpg", "png"]
+    },
+    "hooks": {
+    }
+  }
+}

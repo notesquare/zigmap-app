@@ -1,0 +1,32 @@
+{
+  "from": {
+    "type": "waypoint",
+    "id": "w1"
+  },
+  "to": {
+    "type": "waypoint",
+    "id": "w5"
+  },
+  "results": [
+    {
+      "type": "test1",
+      "directions": [
+        {
+          "id": "d1"
+        },
+        {
+          "id": "d2"
+        },
+        {
+          "id": "d3"
+        },
+        {
+          "id": "d4"
+        },
+        {
+          "id": "d5"
+        }
+      ]
+    }
+  ]
+}

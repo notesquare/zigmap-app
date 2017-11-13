@@ -1,0 +1,31 @@
+{
+  "d1": {
+    "from": "w1",
+    "to": "w2",
+    "imageUrl": ""
+  },
+  "d2": {
+    "from": "w2",
+    "to": "w3",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2Ftest1.jpg?alt=media",
+    "text": "홍대입구 8번 출구 나오자마자 정면에 보이는 상가 #ABOUT_ME"
+  },
+  "d3": {
+    "from": "w3",
+    "to": "w4",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2Ftest2.jpg?alt=media",
+    "text": "앞으로 50m정도 직진하면 #YZ건물 정문 보임. → 입구에 #UNIQLO #유니클로 로고가 보임."
+  },
+  "d4": {
+    "from": "w4",
+    "to": "w5",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2Ftest3.jpg?alt=media",
+    "text": "정문으로 들어가서 바로 오른쪽에 엘레베이터 타는 곳 보임. → 층별 안내사항 및 엘레베이터 내부에도 나눔카에 대한 정보 없음."
+  },
+  "d5": {
+    "from": "w5",
+    "to": "w5",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2Ftest4.jpg?alt=media",
+    "text": "지하 5층 내려서 주차장 들어서자마자 발견한 쏘카. → 쏘카와 그린카가 구분없이 여기저기 주차되어 있음. → 기둥이나 바닥 등에 다른 표시 없음."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "w1": {
+    "name": "홍대입구 8번 출구",
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.557085, "longitude": 126.924297}
+  },
+  "w2": {
+    "name": "About Me",
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.557085, "longitude": 126.924297}
+  },
+  "w3": {
+    "name": "YZ 건물",
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.557426, "longitude": 126.924792}
+  },
+  "w4": {
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.557426, "longitude": 126.924792},
+    "GPSSignal": false
+  },
+  "w5": {
+    "name": "나눔카 주차장 1",
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.557426, "longitude": 126.924792},
+    "GPSSignal": false
+  }
+}

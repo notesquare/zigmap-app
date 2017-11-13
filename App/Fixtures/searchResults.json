@@ -1,0 +1,35 @@
+[
+  [
+    {
+      "type": "direction-walk",
+      "from": {
+        "type": "address",
+        "location": {
+
+        },
+        "text": "현 위치"
+      },
+      "to": {
+        "type": "waypoint",
+        "id": "w1"
+      },
+      "time": 5
+    },
+    {
+      "type": "direction",
+      "id": "d1"
+    },
+    {
+      "type": "direction",
+      "id": "d2"
+    },
+    {
+      "type": "direction",
+      "id": "d3"
+    },
+    {
+      "type": "direction",
+      "id": "d4"
+    }
+  ]
+]
