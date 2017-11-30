@@ -35,7 +35,7 @@ const metrics = {
   cardFillInBoxHeight: 29,
   statusBarHeight: Platform.OS === 'android'
     ? StatusBar.currentHeight || (Platform.Version < 23 ? 25 : 24)
-    : 0,
+    : 24,
   iconSize: 25
 }
 

@@ -6,6 +6,7 @@ import Immutable from 'seamless-immutable'
 
 import CurrentActions, { CurrentTypes } from '../Redux/CurrentRedux'
 import DirectionActions from '../Redux/DirectionRedux'
+import WaypointActions from '../Redux/WaypointRedux'
 import SearchActions from '../Redux/SearchRedux'
 import PaveActions from '../Redux/PaveRedux'
 import NavigatorService from '../Services/Navigator'
@@ -29,12 +30,33 @@ export const createNewDirection = function * createNewDirection (api, { data }) 
 export const openDirections = function * openDirections (api, { directions = [] }) {
   // make sure request all direction
   const existingDirectionIds = yield select(getAllDirectionIds)
-  yield all(_.flatMap(directions, ({ id }) => {
+  yield all(_.flatMap(directions, ({ directionId: id, detailDirections }) => {
+    let ret = []
     if (id && !_.includes(existingDirectionIds, id)) {
-      return [put(DirectionActions.getDirectionRequest(id))]
+      ret.push(put(DirectionActions.getDirectionRequest(id)))
     }
-    return []
+    if (!_.isEmpty(detailDirections)) {
+      _.each(detailDirections, directionId => {
+        if (!_.includes(existingDirectionIds, directionId)) {
+          ret.push(put(DirectionActions.getDirectionRequest(directionId)))
+        }
+      })
+    }
+    return ret
   }))
+
+  // make sure request all waypoints
+  yield all(_.chain(directions)
+    .flatMap(direction => {
+      const fromWaypointId = _.get(direction, ['from', 'id'])
+      const toWaypointId = _.get(direction, ['to', 'id'])
+      return [fromWaypointId, toWaypointId]
+    })
+    .uniq()
+    .filter()
+    .map(waypointId => put(WaypointActions.getWaypointRequest(waypointId)))
+    .value()
+  )
 
   NavigatorService.dispatch(
     NavigationActions.navigate({
@@ -53,6 +75,15 @@ export const openPave = function * openPave (api, { paveId }) {
     NavigationActions.navigate({
       routeName: 'NavigationScreen',
       params: {editMode: true}
+    })
+  )
+}
+
+export const openDirection = function * openPave (api, { directionId }) {
+  NavigatorService.dispatch(
+    NavigationActions.navigate({
+      routeName: 'DirectionScreen'
+      // params: {directionId}
     })
   )
 }

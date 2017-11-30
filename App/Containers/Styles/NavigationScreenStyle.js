@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native'
-import { ApplicationStyles } from '../../Themes/'
+import { ApplicationStyles, Colors } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.header,
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: Colors.white
   },
   waypointsContainer: {
     paddingTop: 20,
@@ -37,5 +38,42 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     flexDirection: 'row'
+  },
+  mainContainer: {
+    flex: 1
+  },
+  sectionHeader: {
+    height: 1,
+    alignSelf: 'flex-end',
+    // alignItems: 'flex-end',
+    // justifyContent: 'flex-end'
+    backgroundColor: 'transparent'
+  },
+  sectionContainer: {
+    alignSelf: 'flex-end',
+    flex: 1,
+    marginTop: 20,
+    marginRight: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 5
+  },
+  sectionText: {
+    alignSelf: 'flex-end'
+  },
+  sectionIcon: {
+    fontSize: 18
+  },
+  timelineContainer: {
+    position: 'absolute',
+    top: 0,
+    width: '15%',
+    left: 0,
+    bottom: 0
+  },
+  timeline: {
+    marginLeft: 50,
+    height: '100%',
+    width: 5,
+    flexDirection: 'column'
   }
 })

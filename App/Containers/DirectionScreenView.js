@@ -33,7 +33,7 @@ class DirectionScreen extends React.Component {
 
   renderItem = ({item = {}, index}) => {
     // const { text, textFlipped, image, flipped, saved, type } = item
-    const { id, image, mapThumbnail, text, location = {}, isNew = false } = item
+    const { image, mapThumbnail, text, location = {} } = item
     const { carouselIndex = 0 } = this.state
     const { enterEditMode } = this.props
 
@@ -55,7 +55,7 @@ class DirectionScreen extends React.Component {
   render () {
     const { width: viewportWidth } = Dimensions.get('window')
     const { firstItem = 0, waypoints = [] } = this.props
-    const { mapLocation = {}, waypointsInEdit = [] } = this.state
+    const { mapLocation = {} } = this.state
 
     return (
       <View style={styles.container}>

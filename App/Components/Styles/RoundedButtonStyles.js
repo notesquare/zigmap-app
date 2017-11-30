@@ -7,7 +7,7 @@ export default StyleSheet.create({
     borderRadius: 5,
     marginHorizontal: Metrics.baseMargin,
     marginVertical: Metrics.baseMargin,
-    backgroundColor: 'blue',
+    backgroundColor: Colors.button,
     justifyContent: 'center'
   },
   buttonText: {

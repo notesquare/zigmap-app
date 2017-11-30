@@ -1,28 +1,185 @@
 {
-  "w1": {
-    "name": "홍대입구 8번 출구",
-    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
-    "location": {"latitude": 37.557085, "longitude": 126.924297}
-  },
-  "w2": {
-    "name": "About Me",
-    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
-    "location": {"latitude": 37.557085, "longitude": 126.924297}
-  },
-  "w3": {
-    "name": "YZ 건물",
-    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
-    "location": {"latitude": 37.557426, "longitude": 126.924792}
-  },
-  "w4": {
-    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
-    "location": {"latitude": 37.557426, "longitude": 126.924792},
-    "GPSSignal": false
-  },
-  "w5": {
+  "sample1": {
     "name": "나눔카 주차장 1",
     "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2Ftest4.jpg?alt=media",
     "location": {"latitude": 37.557426, "longitude": 126.924792},
     "GPSSignal": false
+  },
+  "w1": {
+    "name": "특허정보원",
+    "tags": ["한국특허정보원"],
+    "mapThumbnailUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/mapThumbnails%2Fmap.png?alt=media",
+    "location": {"latitude": 37.559857, "longitude": 126.926341}
+  },
+  "w2": {
+    "name": "홍대입구역 2번출구 나눔카존",
+    "tags": ["KT","나눔카존"],
+    "type": "nanumcar",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2F%ED%8A%B9%ED%97%88%EC%A0%95%EB%B3%B4%EC%9B%90-%EA%B5%AD%EB%A6%BD%EC%84%9C%EC%9A%B8%ED%98%84%EC%B6%A9%EC%9B%90(%EB%82%98%EB%88%94%EC%B9%B4)%2F27.JPG?alt=media&token=dd74014e-db8a-4392-909c-23cda1b53908",
+    "location": {"latitude": 37.557969, "longitude": 126.923700}
+  },
+  "w3": {
+    "name": "국립서울현충원 정문",
+    "location": {"latitude": 37.503545, "longitude": 126.975496}
+  },
+  "w1-1": {
+    "tags": ["한국특허정보원","동교동삼거리"],
+    "location": {"latitude": 37.559512, "longitude": 126.926472}
+  },
+  "w1-2": {
+    "tags": ["스프링펫"],
+    "location": {"latitude": 37.558581, "longitude": 126.925801}
+  },
+  "w1-3": {
+    "tags": ["홍대입구역2번출구","삼성디지털플라자"],
+    "location": {"latitude": 37.557280, "longitude": 126.924121}
+  },
+  "w1-4": {
+    "tags": ["삼성디지털플라자"],
+    "location": {"latitude": 37.557340, "longitude": 126.923852}
+  },
+  "w1-5": {
+    "tags": ["KT","상덕이카페"],
+    "location": {"latitude": 37.557569, "longitude": 126.923825}
+  },
+  "w4": {
+    "name": "홍대입구역 3번출구",
+    "tags": ["홍대입구역3번출구"],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2F%ED%8A%B9%ED%97%88%EC%A0%95%EB%B3%B4%EC%9B%90-%EA%B5%AD%EB%A6%BD%EC%84%9C%EC%9A%B8%ED%98%84%EC%B6%A9%EC%9B%90(%EC%A7%80%ED%95%98%EC%B2%A0)%2F25.JPG?alt=media&token=40487fb5-f17b-4d4d-9256-9966804a5c4e",
+    "location": {"latitude": 37.558522, "longitude": 126.925300}
+  },
+  "w5": {
+    "name": "공항철도 홍대입구역",
+    "location": {"latitude": 37.557684, "longitude": 126.926362}
+  },
+  "w6": {
+    "name": "공항철도 서울역",
+    "location": {"latitude": 37.555863, "longitude": 126.969689}
+  },
+  "w7": {
+    "name": "4호선 서울역",
+    "location": {"latitude": 37.553158, "longitude": 126.972672}
+  },
+  "w8": {
+    "name": "4호선 동작역",
+    "location": {"latitude": 37.502680, "longitude": 126.980326}
+  },
+  "w9": {
+    "name": "동작역 8번출구",
+    "location": {"latitude": 37.503348, "longitude": 126.975918}
+  },
+  "w4-1": {
+    "tags": ["홍대입구역3번출구","피자업"],
+    "location": {"latitude": 37.558398, "longitude": 126.925594}
+  },
+  "w10": {
+    "name": "2호선 홍대입구역",
+    "location": {"latitude": 37.556727, "longitude": 126.923636}
+  },
+  "w11": {
+    "name": "2호선 당산역",
+    "location": {"latitude": 37.535015, "longitude": 126.902801}
+  },
+  "w12": {
+    "name": "당산역 10번출구",
+    "location": {"latitude": 37.533390, "longitude": 126.901886}
+  },
+  "w13": {
+    "name": "당산역 10번출구 나눔카존",
+    "location": {"latitude": 37.531620, "longitude": 126.901070}
+  },
+  "w14": {
+    "name": "동교동삼거리 버스정류장",
+    "tags": ["동교동삼거리","버스정류장"],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2F%ED%8A%B9%ED%97%88%EC%A0%95%EB%B3%B4%EC%9B%90-%EC%84%9C%EC%86%8C%EB%AC%B8%EC%B2%AD%EC%82%AC(%EB%B2%84%EC%8A%A4)%2F29.jpg?alt=media&token=b785a2a3-a039-406f-9e66-4cf22d172603",
+    "location": {"latitude": 37.557986, "longitude": 126.928692}
+  },
+  "w15": {
+    "name": "서소문 버스정류장",
+    "tags": ["서소문","버스정류장"],
+    "location": {"latitude": 37.563133, "longitude": 126.974745}
+  },
+  "w16": {
+    "name": "서소문청사",
+    "tags": ["서소문청사"],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2F%ED%8A%B9%ED%97%88%EC%A0%95%EB%B3%B4%EC%9B%90-%EC%84%9C%EC%86%8C%EB%AC%B8%EC%B2%AD%EC%82%AC(%EB%B2%84%EC%8A%A4)%2F36.jpg?alt=media&token=e41a42c5-de3a-43d9-a87b-240f4b059740",
+    "location": {"latitude": 37.564468, "longitude": 126.975673}
+  },
+  "w14-1": {
+    "tags": ["지누헤어"],
+    "location": {"latitude": 37.559099, "longitude": 126.926176}
+  },
+  "w14-2": {
+    "tags": ["동교동삼거리","횡단보도"],
+    "location": {"latitude": 37.558963, "longitude": 126.926143}
+  },
+  "w14-3": {
+    "tags": ["동교동삼거리","횡단보도"],
+    "location": {"latitude": 37.558912, "longitude": 126.926486}
+  },
+  "w14-4": {
+    "tags": ["유마트","스타벅스"],
+    "location": {"latitude": 37.558776, "longitude": 126.927291}
+  },
+  "w14-5": {
+    "tags": ["올리브영"],
+    "location": {"latitude": 37.558098, "longitude": 126.928904}
+  },
+  "w14-6": {
+    "tags": ["파티마동물병원","횡단보도"],
+    "location": {"latitude": 37.557945, "longitude": 126.928860}
+  },
+  "w16-1": {
+    "tags": ["대한일보빌딩"],
+    "location": {"latitude": 37.563689, "longitude": 126.976167}
+  },
+  "w16-2": {
+    "tags": ["시청역8번출구"],
+    "location": {"latitude": 37.563655, "longitude": 126.976462}
+  },
+  "w16-3": {
+    "tags": ["시청역","횡단보도"],
+    "location": {"latitude": 37.563898, "longitude": 126.976600}
+  },
+  "w16-4": {
+    "tags": ["gs25"],
+    "location": {"latitude": 37.564299, "longitude": 126.976591}
+  },
+  "w16-5": {
+    "tags": ["서소문청사뒷골목","태평식당"],
+    "location": {"latitude": 37.564512, "longitude": 37.564512}
+  },
+  "w17": {
+    "name": "2호선 시청역",
+    "location": {"latitude": 37.563581, "longitude": 126.975383}
+  },
+  "w18": {
+    "name": "시청역 12번출구",
+    "tags": ["시청역12번출구"],
+    "location": {"latitude": 37.564185, "longitude": 126.976531}
+  },
+  "w19": {
+    "name": "사루비아 빌딩 앞 따릉이존",
+    "tags": ["사루비아빌딩","따릉이존"],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/opendirection-1508138057112.appspot.com/o/pictures%2F%ED%8A%B9%ED%97%88%EC%A0%95%EB%B3%B4%EC%9B%90-%EC%84%9C%EC%86%8C%EB%AC%B8%EC%B2%AD%EC%82%AC(%EB%94%B0%EB%A6%89%EC%9D%B4)%2F26.jpg?alt=media&token=5a277d66-ad84-4dde-a8a1-3813d3f1f62f",
+    "location": {"latitude": 37.558995, "longitude": 126.926854}
+  },
+  "w20": {
+    "name": "시청역 1번출구 뒤 따릉이존",
+    "tags": ["시청역","1번출구","따릉이존"],
+    "location": {"latitude": 37.564392, "longitude": 126.976691}
+  },
+  "w20-1": {
+    "tags": ["던킨도너츠"],
+    "location": {"latitude": 37.564632, "longitude": 126.976801}
+  },
+  "w20-2": {
+    "tags": ["무교동낙지","사누키야"],
+    "location": {"latitude": 37.564772, "longitude": 126.976594}
+  },
+  "w20-3": {
+    "tags": ["서소문청사앞"],
+    "location": {"latitude": 37.564823, "longitude": 126.976055}
   }
 }

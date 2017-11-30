@@ -1,16 +1,28 @@
+import _ from 'lodash'
 import FirebaseConfig from '../Config/FirebaseConfig'
 import firebase from 'firebase'
 import 'firebase/firestore'
 
+// https://github.com/firebase/firebase-js-sdk/issues/283
+const originalSend = XMLHttpRequest.prototype.send
+XMLHttpRequest.prototype.send = function (body) {
+  if (body === '') {
+    originalSend.call(this)
+  } else {
+    originalSend.call(this, body)
+  }
+}
+
 // https://github.com/firebase/firebase-js-sdk/issues/183
-global.Image = function () {}
+// global.Image = function () {}
 firebase.initializeApp(FirebaseConfig)
 
 const db = firebase.firestore()
-const storage = firebase.storage()
+// const storage = firebase.storage()
 
 const waypointsRef = db.collection('waypoints')
 const directionsRef = db.collection('directions')
+const searchRef = db.collection('search')
 const pavesRef = db.collection('paves')
 
 // const picturesStorageRef = storage.ref('pictures')
@@ -27,7 +39,7 @@ const getDirection = (id) =>
       if (!doc.exists) {
         throw new Error('EMPTY')
       }
-      return doc.data()
+      return {data: doc.data()}
     })
     .catch(error => ({ error }))
 
@@ -37,7 +49,7 @@ const getPave = (paveId) =>
       if (!doc.exists) {
         throw new Error('EMPTY')
       }
-      return doc.data()
+      return {data: doc.data()}
     })
     .catch(error => ({ error }))
 
@@ -47,7 +59,7 @@ const getWaypoint = (waypointId) =>
       if (!doc.exists) {
         throw new Error('EMPTY')
       }
-      return doc.data()
+      return {data: doc.data()}
     })
     .catch(error => ({ error }))
 
@@ -81,6 +93,22 @@ const searchRoutes = (from, to, filters) => {
 
 }
 
+const getSearchResult = (id) =>
+  searchRef.doc(id).get()
+    .then(doc => ({ data: doc.data() }))
+
+const getSearchResults = () =>
+  searchRef.get()
+    .then(({docs = []}) => ({
+      data: _.map(docs, doc => {
+        const { text } = doc.data()
+        return { id: doc.id, text }
+      })
+    }))
+
+const saveDirectionPoint = (directionId, points = []) =>
+  directionsRef.doc(directionId).update({points})
+
 export default {
   loginAnonymously,
 
@@ -95,5 +123,10 @@ export default {
   saveWaypoint,
 
   searchLocations,
-  searchRoutes
+  searchRoutes,
+
+  // debug only
+  getSearchResults,
+  getSearchResult,
+  saveDirectionPoint
 }

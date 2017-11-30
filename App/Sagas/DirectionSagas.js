@@ -28,6 +28,7 @@ export const getDirection = function * getDirection (api, { directionId }) {
     select(getWaypoint, toWaypointId)
   ])
 
+  console.log(fromWaypointId, toWaypointId)
   yield all([
     !fromFetched && !fromFetching && put(WaypointActions.getWaypointRequest(fromWaypointId)),
     !toFetched && !toFetching && put(WaypointActions.getWaypointRequest(toWaypointId))
@@ -105,4 +106,8 @@ export const editDirection = function * editDirection (api, { directionId, data 
 
   // 3. done
   yield put(DirectionActions.editDirectionSuccess(directionId))
+}
+
+export const saveDirectionPoints = function * saveDirectionPoints (api, { directionId, points }) {
+  yield call(api.saveDirectionPoint, directionId, points)
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import { ViewPropTypes } from 'react-native'
 import PropTypes from 'prop-types'
 import { MapView } from 'expo'
-import PopupDialog, { DialogTitle, DialogButton } from 'react-native-popup-dialog'
+import PopupDialog from 'react-native-popup-dialog'
 
 import styles from './Styles/MapPopupStyles'
 

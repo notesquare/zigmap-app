@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation'
 import NavigationScreen from '../Containers/NavigationScreen'
 import SearchScreen from '../Containers/SearchScreen'
+import DirectionScreen from '../Containers/DirectionScreen'
 
 import Strings from '../Fixtures/strings.json'
 import styles from './Styles/NavigationStyles'
@@ -10,7 +11,8 @@ const PrimaryNav = StackNavigator({
   SearchScreen: {
     screen: SearchScreen,
     navigationOptions: {
-      // headerMode: 'none'
+      headerMode: 'none',
+      header: null,
       // headerStyle: styles.headerModal,
       title: Strings.TITLE_APP
     }
@@ -18,9 +20,17 @@ const PrimaryNav = StackNavigator({
   NavigationScreen: {
     screen: NavigationScreen,
     navigationOptions: {
-      // headerMode: 'none'
+      headerMode: 'none',
+      header: null,
       // headerStyle: styles.headerModal,
       title: Strings.TITLE_APP
+    }
+  },
+  DirectionScreen: {
+    screen: DirectionScreen,
+    navigationOptions: {
+      headerMode: 'none',
+      header: null
     }
   }
 }, {

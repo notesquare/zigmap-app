@@ -20,3 +20,9 @@ export const searchRoutes = function * searchRoutes (api, { from, to, filters = 
 
   yield put(SearchActions.searchRoutesSuccess(data))
 }
+
+// TESTONLY
+export const getSearchData = function * getSearchData (api, { searchId }) {
+  const { data = {} } = yield call(api.getSearchResult, searchId)
+  yield put(SearchActions.setSearchData({ route: data, searching: false }))
+}

@@ -15,12 +15,15 @@ const { Types, Creators } = createActions({
 
   openDirections: ['directions'],
   openPave: ['paveId'],
+  openDirection: ['directionId', 'waypointId'],
   setDirections: ['directions'],
 
   addEmptyDirection: ['refDirectionId'],
   removeDirection: ['directionId'],
 
-  saveRoute: ['directions']
+  saveRoute: ['directions'],
+
+  expandDirection: ['index']
 })
 
 export const CurrentTypes = Types
@@ -41,7 +44,10 @@ export const INITIAL_STATE = Immutable({
   directions: [],
 
   directionsList: [],
-  paveIdList: []
+  paveIdList: [],
+
+  directionId: null,
+  waypointId: null
 })
 
 /* ------------- Reducers ------------- */
@@ -103,6 +109,12 @@ export const setCurrentPaveId = (state, { paveId }) =>
     // ]
   })
 
+export const setCurrentDirectionId = (state, { directionId, waypointId }) =>
+  state.merge({
+    directionId,
+    waypointId
+  })
+
 export const replace = (state, { directionId, newDirectionId }) => {
   const { directions = [], directionsList = [] } = state
   const newDirections = _.map(directions, direction => {
@@ -119,6 +131,29 @@ export const replace = (state, { directionId, newDirectionId }) => {
     ]
   })
 }
+
+export const expand = (state, { index }) => {
+  const { directions = [] } = state
+
+  // expand given index of the directions
+  const newDirections = _.flatMap(directions, (direction, directionIndex) => {
+    if (directionIndex === index) {
+      const { detailDirections = [] } = direction
+      if (detailDirections.length > 0) {
+        return _.map(detailDirections, (directionId, _index) => ({
+          directionId
+        }))
+      }
+    }
+
+    return [direction]
+  })
+
+  return state.merge({
+    directions: newDirections
+  })
+}
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -132,6 +167,9 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.OPEN_DIRECTIONS]: setCurrentDirections,
   [Types.OPEN_PAVE]: setCurrentPaveId,
+  [Types.OPEN_DIRECTION]: setCurrentDirectionId,
 
-  [Types.SET_DIRECTIONS]: setCurrentDirections
+  [Types.SET_DIRECTIONS]: setCurrentDirections,
+
+  [Types.EXPAND_DIRECTION]: expand
 })

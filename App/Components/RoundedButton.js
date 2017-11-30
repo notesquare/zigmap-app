@@ -25,12 +25,14 @@ export default class RoundedButton extends React.Component {
 
   getText () {
     const buttonText = this.props.text || this.props.children || ''
-    return buttonText.toUpperCase()
+    // return buttonText.toUpperCase()
+    return buttonText
   }
 
   render () {
+    const { style } = this.props
     return (
-      <TouchableOpacity style={styles.button} onPress={this.handlePress}>
+      <TouchableOpacity style={[styles.button, style]} onPress={this.handlePress}>
         <Text style={styles.buttonText}>{this.getText()}</Text>
       </TouchableOpacity>
     )

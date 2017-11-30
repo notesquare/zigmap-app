@@ -1,25 +1,25 @@
 {
-  "name": "OpenDirectionApp",
-  "displayName": "Open Direction by NoteSquare",
+  "name": "ZigMapApp",
+  "displayName": "찍맵 by NoteSquare",
   "expo": {
-    "name": "Open Direction",
-    "description": "Open Direction",
-    "slug": "opendirectionapp",
+    "name": "찍맵",
+    "description": "2017 서울시 공공앱 오픈소스 프로젝트",
+    "slug": "zigmapapp",
     "privacy": "unlisted",
-    "sdkVersion": "22.0.0",
-    "version": "0.0.1",
+    "sdkVersion": "23.0.0",
+    "version": "0.1.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app.png",
     "loading": {
       "icon": "./assets/icons/app.png",
-      "backgroundColor": "#ffffff",
+      "backgroundColor": "#6B7E87",
       "hideExponentText": true
     },
     "splash": {
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "mp4", "jpg", "png"]
+      "assetExts": ["png"]
     },
     "hooks": {
     }

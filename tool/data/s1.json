@@ -1,0 +1,274 @@
+{"from":{"name":"특허정보원"},"to":{"name":"국립서울현충원"},"text":"특허정보원 → 국립서울현충원","results": [
+  {
+    "price": 1350,
+    "co2": 0,
+    "type": "최소비용 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w4"
+        },
+        "detailDirections": [
+          "d7","d8","d9","d10"
+        ]
+      },
+      {
+        "type": "walk",
+        "time": 4,
+        "from": {
+          "id": "w4"
+        },
+        "to": {
+          "id": "w5"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 8,
+        "intervals": 2,
+        "subwayno": "공항철도",
+        "from": {
+          "id": "w5"
+        },
+        "to": {
+          "id": "w6"
+        }
+      },
+      {
+        "type": "subway-transfer",
+        "time": 10,
+        "from": {
+          "id": "w6"
+        },
+        "to": {
+          "id": "w7"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 12,
+        "intervals": 5,
+        "subwayno": "4호선",
+        "from": {
+          "id": "w7"
+        },
+        "to": {
+          "id": "w8"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 1,
+        "from": {
+          "id": "w8"
+        },
+        "to": {
+          "id": "w9"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 9,
+        "from": {
+          "id": "w9"
+        },
+        "to": {
+          "id": "w3"
+        }
+      }
+    ]
+  },
+  {
+    "price": 18200,
+    "co2": 2.52,
+    "type": "나눔카우선 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 7,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w2"
+        },
+        "detailDirections": [
+          "d1","d2","d3","d4","d5","d6"
+        ]
+      },
+      {
+        "type": "nanumcar",
+        "time": 31,
+        "traffic": 30,
+        "from": {
+          "id": "w2"
+        },
+        "to": {
+          "id": "w3"
+        }
+      }
+    ]
+  },
+  {
+    "price": 18710,
+    "co2": 1.79,
+    "type": "최단시간 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w4"
+        },
+        "detailDirections": [
+          "d11","d12","d13","d14"
+        ]
+      },
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w4"
+        },
+        "to": {
+          "id": "w10"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 5,
+        "intervals": 2,
+        "subwayno": "2호선",
+        "from": {
+          "id": "w10"
+        },
+        "to": {
+          "id": "w11"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 3,
+        "from": {
+          "id": "w11"
+        },
+        "to": {
+          "id": "w12"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 3,
+        "from": {
+          "id": "w12"
+        },
+        "to": {
+          "id": "w13"
+        }
+      },
+      {
+        "type": "nanumcar",
+        "time": 14,
+        "traffic": 30,
+        "from": {
+          "id": "w13"
+        },
+        "to": {
+          "id": "w3"
+        }
+      }
+    ]
+  },
+  {
+    "price": 1350,
+    "co2": 0,
+    "type": "친환경 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w4"
+        },
+        "detailDirections": [
+          "d7","d8","d9","d10"
+        ]
+      },
+      {
+        "type": "walk",
+        "time": 4,
+        "from": {
+          "id": "w4"
+        },
+        "to": {
+          "id": "w5"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 8,
+        "intervals": 2,
+        "subwayno": "공항철도",
+        "from": {
+          "id": "w5"
+        },
+        "to": {
+          "id": "w6"
+        }
+      },
+      {
+        "type": "subway-transfer",
+        "time": 10,
+        "from": {
+          "id": "w6"
+        },
+        "to": {
+          "id": "w7"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 12,
+        "intervals": 5,
+        "subwayno": "4호선",
+        "from": {
+          "id": "w7"
+        },
+        "to": {
+          "id": "w8"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 1,
+        "from": {
+          "id": "w8"
+        },
+        "to": {
+          "id": "w9"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 9,
+        "from": {
+          "id": "w9"
+        },
+        "to": {
+          "id": "w3"
+        }
+      }
+    ]
+  }
+]}

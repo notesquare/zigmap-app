@@ -16,7 +16,9 @@ const { Types, Creators } = createActions({
 
   editDirectionRequest: ['directionId', 'data'],
   editDirectionSuccess: ['directionId'],
-  editDirectionFailure: ['directionId']
+  editDirectionFailure: ['directionId'],
+
+  saveDirectionPoints: ['directionId', 'points']
 })
 
 export const DirectionTypes = Types
@@ -113,6 +115,12 @@ export const editFailure = (state, { directionId }) =>
     editError: true
   })
 
+export const savePoints = (state, { directionId, points = [] }) =>
+  state.setIn([directionId], {
+    ...state.getIn([directionId]),
+    points
+  })
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -128,5 +136,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.EDIT_DIRECTION_REQUEST]: editRequest,
   [Types.EDIT_DIRECTION_SUCCESS]: editSuccess,
-  [Types.EDIT_DIRECTION_FAILURE]: editFailure
+  [Types.EDIT_DIRECTION_FAILURE]: editFailure,
+
+  [Types.SAVE_DIRECTION_POINTS]: savePoints
 })

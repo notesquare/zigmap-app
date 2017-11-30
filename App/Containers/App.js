@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import RootContainer from './RootContainer'
 import createStore from '../Redux'
-import 'moment/locale/ko' // korean locale
 
 // create our store
 const store = createStore()
@@ -26,6 +25,13 @@ class App extends Component {
       </Provider>
     )
   }
+}
+
+if (module.hot) {
+  module.hot.accept(() => {
+    const nextReducer = require('../Redux').default
+    store.replaceReducer(nextReducer)
+  })
 }
 
 // allow reactotron overlay for fast design in dev mode

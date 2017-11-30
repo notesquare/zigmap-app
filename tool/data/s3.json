@@ -1,0 +1,184 @@
+{"from":{"name":"특허정보원"},"to":{"name":"서소문청사"},"text":"특허정보원 → 서소문청사","results": [
+  {
+    "price": 1200,
+    "co2": 0.1,
+    "type": "최단시간 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 7,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w14"
+        },
+        "detailDirections": [
+          "d15","d16","d17","d18","d19","d20","d21","d22"
+        ]
+      },
+      {
+        "type": "bus",
+        "time": 15,
+        "from": {
+          "id": "w14"
+        },
+        "to": {
+          "id": "w15"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w15"
+        },
+        "to": {
+          "id": "w16"
+        },
+        "detailDirections": [
+          "d23","d24","d25","d26","d27","d28"
+        ]
+      }
+    ]
+  },
+  {
+    "price": 1250,
+    "co2": 0,
+    "type": "친환경 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w4"
+        },
+        "detailDirections": [
+          "d29","d30","d31","d32"
+        ]
+      },
+      {
+        "type": "walk",
+        "time": 6,
+        "from": {
+          "id": "w4"
+        },
+        "to": {
+          "id": "w10"
+        }
+      },
+      {
+        "type": "subway",
+        "time": 10,
+        "intervals": 5,
+        "subwayno": "2호선",
+        "from": {
+          "id": "w10"
+        },
+        "to": {
+          "id": "w17"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 2,
+        "from": {
+          "id": "w17"
+        },
+        "to": {
+          "id": "w18"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 5,
+        "from": {
+          "id": "w18"
+        },
+        "to": {
+          "id": "w16"
+        },
+        "detailDirections": [
+          "d33","d34","d35"
+        ]
+      }
+    ]
+  },
+  {
+    "price": 1000,
+    "co2": 0,
+    "type": "최소비용 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 4,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w19"
+        },
+        "detailDirections": [
+          "d36","d37","d38","d39","d40"
+        ]
+      },
+      {
+        "type": "seoulbike",
+        "time": 21,
+        "from": {
+          "id": "w19"
+        },
+        "to": {
+          "id": "w20"
+        }
+      },
+      {
+        "type": "walk",
+        "time": 5,
+        "from": {
+          "id": "w20"
+        },
+        "to": {
+          "id": "w16"
+        },
+        "detailDirections": [
+          "d41","d42","d43","d44"
+        ]
+      }
+    ]
+  },
+  {
+    "price": 17250,
+    "co2": 1.57,
+    "type": "나눔카우선 경로",
+    "directions": [
+      {
+        "type": "walk",
+        "time": 7,
+        "from": {
+          "id": "w1"
+        },
+        "to": {
+          "id": "w2"
+        },
+        "detailDirections": [
+          "d45","d46","d47","d48","d49","d50"
+        ]
+      },
+      {
+        "type": "nanumcar",
+        "time": 22,
+        "traffic": 30,
+        "from": {
+          "id": "w2"
+        },
+        "to": {
+          "id": "w16"
+        }
+      }
+    ]
+  }
+]}

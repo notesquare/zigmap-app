@@ -27,6 +27,11 @@ const style = {
     fontWeight: '400',
     lineHeight: size.large * 1.4
   },
+  locationName: {
+    fontFamily: type.base,
+    fontSize: size.regular,
+    lineHeight: size.regular * 1.4
+  },
   normal: {
     fontFamily: type.base,
     fontSize: size.regular,

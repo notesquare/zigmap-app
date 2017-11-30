@@ -31,5 +31,46 @@
       "type": "direction",
       "id": "d4"
     }
+  ],
+  [
+    {
+      "type": "walk",
+      "from": {
+        "id": "w6"
+      },
+      "to": {
+        "id": "w7"
+      }
+    },
+    {
+      "type": "subway",
+      "from": {
+        "id": "w7"
+      },
+      "to": {
+        "id": "w8"
+      }
+    },
+    {
+      "type": "subway",
+      "from": {
+        "id": "w8"
+      },
+      "to": {
+        "id": "w9"
+      }
+    },
+    {
+      "type": "walk",
+      "from": {
+        "id": "w9"
+      },
+      "to": {
+        "id": "w10"
+      }
+    },
+    {
+      "id": "d6"
+    }
   ]
 ]

@@ -1,8 +1,15 @@
 import _ from 'lodash'
 import React from 'react'
-import { View, ScrollView, Text } from 'react-native'
+import { View, Text, FlatList, StatusBar, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native'
 import { connect } from 'react-redux'
+import { Feather } from '@expo/vector-icons'
+import Dash from 'react-native-dash'
 
+import { Colors, Images } from '../Themes'
+
+import DemoPopup from '../Components/DemoPopup'
+import SelectButton from '../Components/SelectButton'
+import SearchResultItem from '../Components/SearchResultItem'
 import RoundedButton from '../Components/RoundedButton'
 
 // Actions
@@ -43,6 +50,64 @@ class SearchScreen extends React.Component {
     openPave()
   }
 
+  handleReset = () => {
+    const { resetSearch } = this.props
+    resetSearch()
+  }
+
+  handleDemoScreen = () => {
+    if (this.popupDialog && this.popupDialog.ref) {
+      this.popupDialog.ref.show()
+    }
+  }
+
+  handleSearchSelect = (key) => {
+    const { getSearchData } = this.props
+    // console.log(_data[key])
+    getSearchData(key)
+    // getSearchData({route: _data[key]})
+  }
+
+  renderSearchResultItem = ({item = {}, index}) => {
+    const { directions = [], price, type, co2 } = item
+    // 1. calculate entire time
+    const totalTime = _.reduce(directions, (acc, {time = 1}) => (
+      acc += time
+    ), 0)
+
+    // 2. combine all time with sections
+    // caveat: subway-transfor is same as walk
+    const methods = _.chain(directions)
+      .map(direction => {
+        if (direction.type === 'subway-transfer') {
+          return {...direction, type: 'walk'}
+        }
+        return direction
+      })
+      .groupBy('type')
+      .map((items = [], key) => ({
+        type: key,
+        time: _.sumBy(items, 'time')
+      }))
+      .value()
+
+    // const methods = [
+    //   {type: 'walk', time: 10},
+    //   {type: 'subway', time: 20},
+    //   {type: 'bus', time: 13}
+    // ]
+    return (
+      <SearchResultItem
+        type={type}
+        price={price.toLocaleString('ko')}
+        co2={co2.toLocaleString('ko')}
+        onPress={() => this.handleOpenDirections(directions)}
+        methods={methods}
+        totalTime={totalTime}
+      />
+    )
+  }
+
   render () {
     const {
       routeFrom = '',
@@ -50,26 +115,81 @@ class SearchScreen extends React.Component {
       // locationSearching,
       // locationSearchError,
       // locationSearchResults,
-      // routeSearching,
+      routeSearching,
       // routeSearchError,
-      routeSearchResults
+      routeSearchResults = [],
+      _items
     } = this.props
 
     return (
       <View style={styles.container}>
+        <StatusBar barStyle='light-content' />
         <View style={styles.searchContainer}>
-          <View style={styles.fromContainer}>
-            <Text>FROM: <Text>{routeFrom}</Text></Text>
-          </View>
-          <View style={styles.toContainer}>
-            <Text>TO: <Text>{routeTo}</Text></Text>
+          <View style={styles.locationContainer}>
+            <View style={styles.timelineContainer}>
+              <Feather name='disc' style={styles.startIcon} />
+            </View>
+            <TouchableOpacity
+              style={styles.inputContainer}
+              onPress={this.handleDemoScreen}
+            >
+              <View style={styles.startInputBox}>
+                {routeFrom ? (
+                  <Text style={styles.inputText}>{routeFrom}</Text>
+                ) : (
+                  <Text style={styles.inputTextLow}>출발지</Text>
+                )}
+              </View>
+            </TouchableOpacity>
           </View>
           <View style={styles.filterContainer}>
-            <Text>FILTER HERE@</Text>
+            <View style={styles.timelineContainer}>
+              <Dash
+                style={styles.timeline}
+                dashThickness={3}
+                dashLength={4}
+                dashGap={2}
+                dashColor={Colors.point1}
+              />
+            </View>
+            <ScrollView horizontal style={styles.travelModesContainer}>
+              <SelectButton
+                style={styles.travelModeContainer}
+                text='최소 비용'
+              />
+              <SelectButton
+                style={styles.travelModeContainer}
+                text='나눔카 우선'
+              />
+              <SelectButton
+                style={styles.travelModeContainer}
+                text='따릉이 우선'
+              />
+              <SelectButton
+                style={styles.travelModeContainer}
+                text='도보 최소'
+              />
+            </ScrollView>
           </View>
-          <RoundedButton text='Search' onPress={this.handleSearch} />
+          <View style={styles.locationContainer}>
+            <View style={styles.timelineContainer}>
+              <Feather name='map-pin' style={styles.finishIcon} />
+            </View>
+            <TouchableOpacity
+              style={styles.inputContainer}
+              onPress={this.handleDemoScreen}
+            >
+              <View style={styles.finishInputBox}>
+                {routeTo ? (
+                  <Text style={styles.inputText}>{routeTo}</Text>
+                ) : (
+                  <Text style={styles.inputTextLow}>도착지</Text>
+                )}
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-        <ScrollView style={styles.resultsContainer}>
+        {/* <ScrollView style={styles.resultsContainer}>
           {routeSearchResults && (
             _.map(routeSearchResults, ({ directions = [] }, index) => (
               <RoundedButton
@@ -79,20 +199,55 @@ class SearchScreen extends React.Component {
               />
             ))
           )}
-        </ScrollView>
-        <View style={styles.controlContainer}>
-          <RoundedButton
-            text='PAVE +'
-            onPress={() => this.handleNewPave()}
-          />
+        </ScrollView> */}
+        <View style={styles.mainContainer}>
+          {routeSearching ? (
+            <ActivityIndicator size='large' />
+          ) : (
+            routeSearchResults.length > 0 ? ([
+              <FlatList
+                key='flatlist'
+                style={styles.resultsContainer}
+                renderItem={this.renderSearchResultItem}
+                data={routeSearchResults}
+                // renderSectionHeader={this.renderSectionHeader}
+                // sections={directions}
+                keyExtractor={(item, index) => index}
+                ListFooterComponent={<View style={{height: 100}} />}
+              />,
+              <View key='button1' style={styles.bottomContainer}>
+                <RoundedButton
+                  text='검색결과 초기화'
+                  onPress={() => this.handleReset()}
+                />
+              </View>
+            ]) : (
+              <View style={styles.controlContainer}>
+                {/* <RoundedButton text='Search' onPress={this.handleSearch} /> */}
+                <View style={styles.disclaimerContainer}>
+                  <Image source={Images.disclaimer} style={styles.disclaimerImage} />
+                </View>
+                <RoundedButton
+                  text='길 개척하기 &#945;'
+                  onPress={() => this.handleDemoScreen()}
+                />
+              </View>
+            )
+          )}
         </View>
+        <DemoPopup
+          ref={ref => { this.popupDialog = ref }}
+          style={styles.popupContainer}
+          onSelect={this.handleSearchSelect}
+          items={_items}
+        />
       </View>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { waypoint = {}, search = {} } = state
+  const { search = {} } = state
   const { location = {}, route = {} } = search
   const {
     searching: locationSearching,
@@ -100,33 +255,26 @@ const mapStateToProps = (state, ownProps) => {
     results: locationSearchResults
   } = location
   const {
-    from = {},
-    to = {},
+    from: { name: routeFrom } = {},
+    to: { name: routeTo } = {},
     searching: routeSearching,
     searchError: routeSearchError,
     results: routeSearchResults
   } = route
 
-  let fromName = null
-  let toName = null
-  if (from.type === 'waypoint') {
-    const { name } = _.get(waypoint, from.id, {})
-    fromName = name
-  }
-  if (to.type === 'waypoint') {
-    const { name } = _.get(waypoint, to.id, {})
-    toName = name
-  }
+  // debug only
+  const { _debug = [] } = search
 
   return {
     locationSearching,
     locationSearchError,
     locationSearchResults,
-    routeFrom: fromName,
-    routeTo: toName,
+    routeFrom,
+    routeTo,
     routeSearching,
     routeSearchError,
-    routeSearchResults
+    routeSearchResults,
+    _items: _debug
   }
 }
 
@@ -135,7 +283,9 @@ const mapDispatchToProps = (dispatch) => {
     searchLocation: (query) => dispatch(SearchActions.searchLocationsRequest(query)),
     searchRoutes: (from, to, filters) => dispatch(SearchActions.searchRoutesRequest(from, to, filters)),
     openDirections: (directions) => dispatch(CurrentActions.openDirections(directions)),
-    openPave: (paveId) => dispatch(CurrentActions.openPave(paveId))
+    openPave: (paveId) => dispatch(CurrentActions.openPave(paveId)),
+    resetSearch: () => dispatch(SearchActions.resetSearch()),
+    getSearchData: (searchId) => dispatch(SearchActions.getSearchData(searchId))
   }
 }
 

@@ -12,7 +12,10 @@ const { Types, Creators } = createActions({
   searchRoutesSuccess: ['results'],
   searchRoutesFailure: null,
 
-  setSearchData: ['data']
+  resetSearch: null,
+
+  setSearchData: ['data'],
+  getSearchData: ['searchId']
 })
 
 export const SearchTypes = Types
@@ -88,8 +91,21 @@ export const searchRoutesFailure = (state) =>
     searchError: true
   })
 
+export const reset = (state) =>
+  state.merge({
+    route: INITIAL_ROUTE_STATE,
+    location: INITIAL_LOCATION_STATE
+  })
+
 export const _setSearchData = (state, { data }) =>
   state.merge(data)
+
+export const _getSearchData = (state, { searchId }) =>
+  state.setIn(['route'], {
+    ...INITIAL_ROUTE_STATE,
+    searching: true,
+    searchError: false
+  })
 
 /* ------------- Hookup Reducers To Types ------------- */
 
@@ -102,6 +118,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SEARCH_ROUTES_SUCCESS]: searchRoutesSuccess,
   [Types.SEARCH_ROUTES_FAILURE]: searchRoutesFailure,
 
+  [Types.RESET_SEARCH]: reset,
+
   // debug only
-  [Types.SET_SEARCH_DATA]: _setSearchData
+  [Types.SET_SEARCH_DATA]: _setSearchData,
+  [Types.GET_SEARCH_DATA]: _getSearchData
 })

@@ -1,41 +1,34 @@
-const PRIMARY_COLOR = '#353A4C'
-const SECONDARY_COLOR = '#6CBCA7'
+const PRIMARY = '#3B3F42'
+const PRIMARY_CONTRAST = '#EDF0F7'
+const RED = '#F24C27'
+const GREEN = '#6AAE3A'
 
 const colors = {
-  background: '#fff',
+  background: PRIMARY_CONTRAST,
 
-  text: PRIMARY_COLOR,
-  textLow: PRIMARY_COLOR,
+  searchHeaderBackground: PRIMARY,
+  searchHeaderInputBox: PRIMARY_CONTRAST,
+  headerBackground: PRIMARY,
+  headerBackgroundDarker: '#17607F',
 
-  // cardFront: '#FFF1E1',
-  cardFront: '#efefef',
-  // cardBack: '#A0B4CF',
-  cardBack: PRIMARY_COLOR,
+  selectButton: '#FFD7BD',
+  selectButtonSelected: '#FF781F',
 
-  cardText: PRIMARY_COLOR,
-  cardSelections: ['#41CCC9', '#4A9ACD', '#5A5386', '#524364'],
-  cardBorder: PRIMARY_COLOR,
+  start: GREEN,
+  finish: RED,
+  point1: '#4FA7EE',
+  point2: '#FF781F',
 
-  choiceBackground: PRIMARY_COLOR,
-
-  headerText: PRIMARY_COLOR,
-
-  tagBorder: PRIMARY_COLOR,
-  specialTag: '#5A5386',
-  tag: PRIMARY_COLOR,
-
-  header: '#f9f9fc',
-  // cardsScreenBackground: SECONDARY_COLOR,
-  cardsScreenBackground: '#fff',
+  cardBackground: '#EDF0F7',
 
   red: '#e93b40',
   yellow: 'yellow',
   green: 'green',
   deselected: '#ccc',
+  white: '#fefefe',
+  linkText: '#187ffb',
 
-  primary: PRIMARY_COLOR,
-  secondary: SECONDARY_COLOR,
-  linkText: '#187ffb'
+  button: '#4FA7EE'
 }
 
 export default colors

@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, all, throttle } from 'redux-saga/effects'
+import { takeLatest, takeEvery, all } from 'redux-saga/effects'
 import API from '../Services/Api'
 import FixtureAPI from '../Services/FixtureApi'
 import DebugConfig from '../Config/DebugConfig'
@@ -15,11 +15,20 @@ import { SearchTypes } from '../Redux/SearchRedux'
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
-import { createNewPave, createNewDirection, openDirections, openPave, addEmptyDirection, removeDirection, saveRoute } from './CurrentSagas'
+import {
+  createNewPave,
+  createNewDirection,
+  openDirections,
+  openPave,
+  openDirection,
+  addEmptyDirection,
+  removeDirection,
+  saveRoute
+} from './CurrentSagas'
 import { getWaypoint, saveWaypoint } from './WaypointSagas'
-import { getDirection, saveDirection, editDirection } from './DirectionSagas'
+import { getDirection, saveDirection, editDirection, saveDirectionPoints } from './DirectionSagas'
 import { getPave, savePave, updatePave, editPave } from './PaveSagas'
-import { searchLocations, searchRoutes } from './SearchSagas'
+import { searchLocations, searchRoutes, getSearchData } from './SearchSagas'
 /* ------------- API ------------- */
 
 const api = DebugConfig.useFixtures ? FixtureAPI : API
@@ -32,8 +41,11 @@ const root = function * root () {
 
     takeEvery(CurrentTypes.CREATE_PAVE_REQUEST, createNewPave, api),
     takeEvery(CurrentTypes.CREATE_DIRECTION_REQUEST, createNewDirection, api),
+
     takeLatest(CurrentTypes.OPEN_DIRECTIONS, openDirections, api),
     takeLatest(CurrentTypes.OPEN_PAVE, openPave, api),
+    takeLatest(CurrentTypes.OPEN_DIRECTION, openDirection, api),
+
     takeLatest(CurrentTypes.ADD_EMPTY_DIRECTION, addEmptyDirection, api),
     takeLatest(CurrentTypes.REMOVE_DIRECTION, removeDirection, api),
     takeLatest(CurrentTypes.SAVE_ROUTE, saveRoute, api),
@@ -44,6 +56,7 @@ const root = function * root () {
     takeEvery(DirectionTypes.GET_DIRECTION_REQUEST, getDirection, api),
     takeEvery(DirectionTypes.SAVE_DIRECTION_REQUEST, saveDirection, api),
     takeEvery(DirectionTypes.EDIT_DIRECTION_REQUEST, editDirection, api),
+    takeEvery(DirectionTypes.SAVE_DIRECTION_POINTS, saveDirectionPoints, api),
 
     takeEvery(PaveTypes.GET_PAVE_REQUEST, getPave, api),
     takeEvery(PaveTypes.SAVE_PAVE_REQUEST, savePave, api),
@@ -51,7 +64,9 @@ const root = function * root () {
     takeEvery(PaveTypes.EDIT_PAVE_REQUEST, editPave, api),
 
     takeLatest(SearchTypes.SEARCH_LOCATIONS_REQUEST, searchLocations, api),
-    takeLatest(SearchTypes.SEARCH_ROUTES_REQUEST, searchRoutes, api)
+    takeLatest(SearchTypes.SEARCH_ROUTES_REQUEST, searchRoutes, api),
+
+    takeLatest(SearchTypes.GET_SEARCH_DATA, getSearchData, api)
   ])
 }
 
