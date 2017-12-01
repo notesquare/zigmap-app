@@ -36,7 +36,11 @@ export default class DrawableView extends React.Component {
   constructor (props) {
     super(props)
 
-    this.points = _.map(defaultPoints, ([x, y]) => ({x, y}))
+    if (!_.isEmpty(props.points)) {
+      this.points = props.points
+    } else {
+      this.points = _.map(defaultPoints, ([x, y]) => ({x, y}))
+    }
 
     this.state.animatedPercentage.addListener((a) => {
       this.draw(a.value)

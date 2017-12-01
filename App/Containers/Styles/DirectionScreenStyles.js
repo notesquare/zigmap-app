@@ -45,7 +45,6 @@ export default StyleSheet.create({
     paddingHorizontal: 10
   },
   editButtonContainer: {
-    flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     marginBottom: 10
@@ -104,7 +103,8 @@ export default StyleSheet.create({
   },
   tagContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   tagText: {
     ...Fonts.style.normal,
