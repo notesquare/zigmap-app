@@ -49,7 +49,7 @@ export default class DrawableView extends React.Component {
     this.directionAnimation = Animated.loop(
       Animated.sequence([
         Animated.timing(this.state.animatedPercentage, {
-          toValue: 100, duration: 1500, delay: 2000
+          toValue: 100, duration: 1200, delay: 2000
         })
         // Animated.timing(this.state.animatedPercentage, {
         //   toValue: 0, duration: 100, delay: 100
@@ -57,6 +57,34 @@ export default class DrawableView extends React.Component {
       ]))
 
     this.directionAnimation.start()
+  }
+
+  createArrow (points) {
+    if (points.length < 2) {
+      return []
+    }
+
+    // last two points
+    const {x: x1, y: y1} = points[points.length - 2]
+    const {x: x2, y: y2} = points[points.length - 1]
+    const l = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+    const lExpected = 0.005 + 0.015 * Math.min(points.length, 10)
+    const a = 0.8
+    const x3 = (-(x2 - x1) * Math.cos(a) + (y2 - y1) * Math.sin(a)) * (lExpected / l) + x2
+    const y3 = (-(x2 - x1) * Math.sin(a) - (y2 - y1) * Math.cos(a)) * (lExpected / l) + y2
+    const x4 = (-(x2 - x1) * Math.cos(-a) + (y2 - y1) * Math.sin(-a)) * (lExpected / l) + x2
+    const y4 = (-(x2 - x1) * Math.sin(-a) - (y2 - y1) * Math.cos(-a)) * (lExpected / l) + y2
+
+    const expectedMove = 0.1
+
+    const x0 = x2 + expectedMove * (x2 - x1) / l
+    const y0 = y2 + expectedMove * (y2 - y1) / l
+    return [
+      {x: x3, y: y3},
+      {x: x0, y: y0},
+      {x: x4, y: y4}
+    ]
   }
 
   componentWillReceiveProps (nextProps) {
@@ -118,41 +146,48 @@ export default class DrawableView extends React.Component {
   }
 
   draw = (percentage) => {
-    const d1 = this.createPropsD(100)
-    const d2 = this.createPropsD(percentage)
     if (this.svgPath) {
-      this.svgPath.setNativeProps({d: d1})
+      const d = this.createPropsD(this.points)
+      this.svgPath.setNativeProps({d})
     }
     if (this.animatedSvgPath) {
-      this.animatedSvgPath.setNativeProps({d: d2})
+      const points = this.take(this.points, percentage)
+      const d = this.createPropsD(points)
+      this.animatedSvgPath.setNativeProps({d})
+
+      if (this.arrowPath) {
+        const arrows = this.createArrow(points)
+        const dArrow = this.createPropsD(arrows, 100)
+        this.arrowPath.setNativeProps({d: dArrow})
+      }
     }
   }
 
-  pointsToString = (percentage, w, h) => {
-    if (this.points.length < 2) {
-      return ''
-    }
-    return _.chain(this.points)
+  pointsToString = (points, w, h) => {
+    return _.chain(points)
       .map(({x, y}) => ({
         x: (1 + x) * w / 2,
         y: (1 - y) * h / 2
       }))
-      .take(this.points.length * percentage / 100)
       .reduce((acc, {x, y}, i) => acc + x + ',' + y + ' ', '')
       .value()
   }
 
-  createPropsD = (percentage) => {
+  take (points, percentage) {
+    return _.take(points, points.length * percentage / 100)
+  }
+
+  createPropsD (points) {
     const { width, height } = this.state
-    const points = this.pointsToString(percentage, width, height)
+    const s = this.pointsToString(points, width, height)
     // https://github.com/react-native-community/react-native-svg/blob/master/elements/Polygon.js
-    return `M${extractPolyPoints(points)}`
+    return `M${extractPolyPoints(s)}`
   }
 
   render () {
     const { width, height } = this.state
     const { editable = false } = this.props
-    const strokeWidth = width / 20
+    const strokeWidth = width / 22
     return (
       <View
         style={[this.props.style]}
@@ -169,15 +204,30 @@ export default class DrawableView extends React.Component {
               ref={ref => (this.svgPath = ref)}
               d=''
               fill='none'
-              stroke='rgba(255,255,255,0.3)'
-              strokeWidth={strokeWidth}
+              stroke='#fff'
+              strokeOpacity={0.3}
+              strokeWidth={strokeWidth / 4}
+              strokeDasharray={[10, 5]}
             />
             <Expo.Svg.Path
               ref={ref => (this.animatedSvgPath = ref)}
               d=''
               fill='none'
-              stroke='rgba(255,255,255,0.7)'
+              stroke='#fff'
+              strokeOpacity={0.8}
               strokeWidth={strokeWidth}
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+            <Expo.Svg.Path
+              ref={ref => (this.arrowPath = ref)}
+              d=''
+              fill='none'
+              stroke={'#fff'}
+              strokeOpacity={1}
+              strokeWidth={strokeWidth / 1.5}
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </Expo.Svg>
         )}
